@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
-
+import VideoDetail from './components/video_detail';
 const API_KEY =  'AIzaSyDOkIHRmlpR0p2BCEvwePv8xlDP3YMo_UI';
 
 
@@ -12,6 +12,7 @@ const App = () => {
   return (
     <div>
       <SearchBar />
+      <VideoDetail />
     </div>
   );
 }
