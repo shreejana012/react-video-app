@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
@@ -15,13 +15,15 @@ YTSearch({
 // Creata a new component.This component produce some HTML
 // Take this component's generated HTML and put it
 // On the page (in the DOM)
-const App = () => {
-  return (
-    <div>
-      <SearchBar />
-      <VideoDetail />
-    </div>
-  );
+class App extends Component {
+  render(){
+    return(
+      <div>
+        <SearchBar />
+        <VideoDetail />
+      </div>
+    );
+  }
 }
 ReactDOM.render(<App />, document.querySelector('.container'));
 // ReactDOM.render(<App />, document.querySelector('.container'));
