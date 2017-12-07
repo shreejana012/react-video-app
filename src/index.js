@@ -5,13 +5,6 @@ import SearchBar from './components/search_bar';
 import VideoDetail from './components/video_detail';
 const API_KEY =  'AIzaSyDOkIHRmlpR0p2BCEvwePv8xlDP3YMo_UI';
 
-YTSearch({
-  key: API_KEY,
-  term: 'surfboards',
-},function(data){
-    console.log(data);
-  });
-
 // Creata a new component.This component produce some HTML
 // Take this component's generated HTML and put it
 // On the page (in the DOM)
@@ -21,6 +14,9 @@ class App extends Component {
     this.state = {
       videos: [],
     }
+    YTSearch({key: API_KEY,term: 'surfboards',},function(data){
+      console.log(data);
+    });
   }
   render(){
     return(
