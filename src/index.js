@@ -16,6 +16,12 @@ YTSearch({
 // Take this component's generated HTML and put it
 // On the page (in the DOM)
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      videos: [],
+    }
+  }
   render(){
     return(
       <div>
