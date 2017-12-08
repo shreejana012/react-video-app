@@ -3,15 +3,12 @@ import VideoListItem from './video_list_item';
 
 function VideoList(props){
     let videoItems = props.videos.map((video) =>{
-        return <VideoListItem video= {video}/>
+        return <VideoListItem key= {video.etag}video= {video} />
     });
     return (
-        <div>
-            <ul>
-              {videoItems}  
-            </ul>
-        </div>
-
+        <ul className="col-md-4 list-group">
+            {videoItems}  
+        </ul>
     );
 }
 
