@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 function VideoDetail(props){
     if (!props.video){
         return <div>Loading...</div>;
