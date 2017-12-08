@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 function VideoListItem(props){
     const video = props.video;
-    const imageUrl = props.video.snippet.thumbnails.default.url;
-    const title = props.video.snippet.title;
+    const imageUrl = video.snippet.thumbnails.default.url;
+    const title = video.snippet.title;
     return (
         <li className="list-group-item">
             <div className= "video-list media">
