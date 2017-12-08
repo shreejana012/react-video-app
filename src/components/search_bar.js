@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+const divStyle = {
+  marginTop:'30px',
+  marginBottom: '20px',
+  width: '64%',
+  marginLeft: '15px',
+  // margin: '20px',
+  // textAlign: 'center'
+}
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -9,19 +17,17 @@ class SearchBar extends Component {
     this.handleOnchange = this.handleOnchange.bind(this);
   }
 
-  handleOnchange(event){
-    this.setState({
-      term: event.target.value
-
-    });
+  handleOnchange(term){
+    this.setState({term});
+    this.props.onSelectTermChange(term);
   }
   
   render() {
     return(
-      <div>
-        <input value = {this.state.term} onChange={this.handleOnchange} /> <br />
-        {/* <p>Value of input: {this.state.term}</p> */}
-      </div>
+        <div>
+          <input style={divStyle} value = {this.state.term} onChange={event => this.handleOnchange(event.target.value)} /> <br />
+          {/* <p>Value of input: {this.state.term}</p> */}
+        </div>
     );
      
   }
