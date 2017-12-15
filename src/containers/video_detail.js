@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import CommentVideo from './comment_video';
+
+
+const detailStyle = {
+    marginBottom: '0',
+}
+const channelTitleStyle = {
+    color: 'red',
+}
 function VideoDetail(props){
     if (!props.video){
         return <div>Loading...</div>;
@@ -17,7 +26,10 @@ function VideoDetail(props){
                     
                 </iframe>
             </div>
-            <div className="details">
+            <div className="details" style = {detailStyle}>
+                <div style = {channelTitleStyle}>
+                    Channel Name: {video.snippet.channelTitle}
+                </div>
                 <div className="title">
                     {video.snippet.title}
                 </div>
@@ -25,6 +37,7 @@ function VideoDetail(props){
                     {video.snippet.description}
                 </div>
             </div>
+            <CommentVideo />
         </div>
 
     );

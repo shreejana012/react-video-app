@@ -2,10 +2,11 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
-import SearchBar from './components/search_bar';
-import VideoDetail from './components/video_detail';
-import VideoList from './components/video_list';
-
+import SearchBar from '../containers/search_bar';
+import VideoDetail from '../containers/video_detail';
+import VideoList from '../containers/video_list';
+import {store} from '../stores/store';
+import {Provider} from 'react-redux';
 
 const API_KEY =  'AIzaSyDOkIHRmlpR0p2BCEvwePv8xlDP3YMo_UI';
 
@@ -44,5 +45,8 @@ class App extends Component {
     );
   }
 }
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(
+<Provider store = {store}>
+  <App />
+</Provider>, document.querySelector('.container'));
 // ReactDOM.render(<App />, document.querySelector('.container'));
