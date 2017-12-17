@@ -8,10 +8,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import{ videoSearch} from '../actions/video-search-action';
 
-// import YTSearch from 'youtube-api-search';
-
-// const API_KEY =  'AIzaSyDOkIHRmlpR0p2BCEvwePv8xlDP3YMo_UI';
-
 class App extends Component {
     constructor(props){
       super(props);
@@ -21,11 +17,11 @@ class App extends Component {
       this.props.videoSearch('nepali');   
   }
 
-    search(term) {
+    searchVideo = (term) => {
         this.props.videoSearch(term);
     }
     
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps = (nextProps) => {
       this.setState({selectedVideo: nextProps.selectedVideo});
     }
     // videoSearch(term){
@@ -38,10 +34,10 @@ class App extends Component {
     // }
     
     render(){
-    //   const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300)
+     const searchVideo = _.debounce((term) => {this.searchVideo(term) }, 300)
       return(
         <div>
-          <SearchBar onSelectTermChange= {this.search.bind(this)}/>
+          <SearchBar onSelectTermChange= {searchVideo}/>
           <VideoDetail video={this.state.selectedVideo}/>
           <VideoList 
           onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
