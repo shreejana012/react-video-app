@@ -6,9 +6,8 @@ import VideoDetail from '../containers/video_detail';
 import VideoList from '../containers/video_list';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import{ videoSearch} from '../actions/video-search-action';
 
-// import { SearchVideos } from '../actions/index';
-import { videoSearch } from '../actions/index';
 // import YTSearch from 'youtube-api-search';
 
 // const API_KEY =  'AIzaSyDOkIHRmlpR0p2BCEvwePv8xlDP3YMo_UI';
@@ -17,18 +16,18 @@ class App extends Component {
     constructor(props){
       super(props);
       this.state = {
-        videos: [],
-        // selectedVideo: null
+        selectedVideo: null
       }
-    //   this.videoSearch('nepali');    
+      this.search('nepali');    
     }
+
     search(term) {
         this.props.videoSearch(term);
     }
+
     onVideoSelect(selectedVideo) {
         this.setState({selectedVideo})
     }
-    
   
     // videoSearch(term){
     //    YTSearch({key: API_KEY,term: term},(data) => {
@@ -44,12 +43,10 @@ class App extends Component {
       return(
         <div>
           <SearchBar onSelectTermChange= {this.search.bind(this)}/>
-          <VideoDetail video={this.state.selectedVideo}/>
-
-          {/* <VideoDetail video={this.state.selectedVideo}/> */}
+          <VideoDetail video={this.props.selectedVideo}/>
           <VideoList 
           onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-          videos={this.state.videos} />
+          videos={this.props.videos} />
         </div>
       );
     }
@@ -57,11 +54,11 @@ class App extends Component {
   function mapStateToProps(state) {
     return { 
       videos: state.videos,
-      // selectedVideo: state.videos[0],
+      selectedVideo: state.videos[0]
      };
   }
   function mapDispatchToProps(dispatch) {
     return bindActionCreators({videoSearch}, dispatch)
   }
-  
+ 
   export default connect(mapStateToProps, mapDispatchToProps)(App);
