@@ -5,14 +5,12 @@ const divStyle = {
   marginBottom: '20px',
   width: '64%',
   marginLeft: '15px',
-  // margin: '20px',
-  // textAlign: 'center'
 }
 class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: null,
+      term: '',
     };
     this.handleOnchange = this.handleOnchange.bind(this);
   }
@@ -32,6 +30,4 @@ class SearchBar extends Component {
      
   }
 }
-
-
 export default SearchBar;
