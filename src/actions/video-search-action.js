@@ -5,7 +5,7 @@ export const videoSearch = (term) => {
     const params = {
         part: 'snippet',
         key: API_KEY,
-        term: term,
+        q: term,
         type: 'video',
     };
     const request = axios.get(YOUTUBE_URL, { params: params });

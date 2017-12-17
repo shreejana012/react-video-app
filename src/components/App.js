@@ -18,17 +18,16 @@ class App extends Component {
       this.state = {
         selectedVideo: null
       }
-      this.search('nepali');    
-    }
+      this.props.videoSearch('nepali');   
+  }
 
     search(term) {
         this.props.videoSearch(term);
     }
-
-    onVideoSelect(selectedVideo) {
-        this.setState({selectedVideo})
+    
+    componentWillReceiveProps(nextProps) {
+      this.setState({selectedVideo: nextProps.selectedVideo});
     }
-  
     // videoSearch(term){
     //    YTSearch({key: API_KEY,term: term},(data) => {
     //     this.setState({
@@ -43,7 +42,7 @@ class App extends Component {
       return(
         <div>
           <SearchBar onSelectTermChange= {this.search.bind(this)}/>
-          <VideoDetail video={this.props.selectedVideo}/>
+          <VideoDetail video={this.state.selectedVideo}/>
           <VideoList 
           onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
           videos={this.props.videos} />
